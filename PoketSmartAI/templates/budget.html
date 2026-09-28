@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Budget - PocketSmart AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>💰 Budget Planner</h1>
+
+        <p>Enter your monthly income and expenses.</p>
+
+        <form>
+
+            <label>Monthly Income:</label><br>
+            <input type="number" id="income" placeholder="Enter income" required>
+            <br><br>
+
+            <label>Monthly Expenses:</label><br>
+            <input type="number" id="expenses" placeholder="Enter expenses" required>
+            <br><br>
+
+            <button type="button" onclick="calculateBudget()">
+                Calculate Budget
+            </button>
+
+        </form>
+
+        <br>
+
+        <h2 id="result"></h2>
+
+        <br>
+
+        <a href="/dashboard">⬅ Back to Dashboard</a>
+
+    </div>
+
+    <script>
+        function calculateBudget() {
+
+            let income = Number(document.getElementById("income").value);
+            let expenses = Number(document.getElementById("expenses").value);
+
+            let savings = income - expenses;
+
+            document.getElementById("result").innerHTML =
+                "Your estimated savings: ₹" + savings;
+        }
+    </script>
+
+</body>
+</html>

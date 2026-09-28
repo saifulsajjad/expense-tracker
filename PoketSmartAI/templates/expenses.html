@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Expenses - PocketSmart AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📊 Expense Tracker</h1>
+
+        <p>Enter your daily expenses.</p>
+
+        <form>
+
+            <label>Expense Category:</label><br>
+            <select id="category">
+                <option value="Food">Food</option>
+                <option value="Travel">Travel</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Education">Education</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <br><br>
+
+            <label>Amount:</label><br>
+            <input type="number" id="amount"
+                   placeholder="Enter amount" required>
+
+            <br><br>
+
+            <button type="button" onclick="addExpense()">
+                Add Expense
+            </button>
+
+        </form>
+
+        <br>
+
+        <h2>Expense List</h2>
+
+        <ul id="expenseList"></ul>
+
+        <h2 id="total">Total: ₹0</h2>
+
+        <br>
+
+        <a href="/dashboard">⬅ Back to Dashboard</a>
+
+    </div>
+
+    <script>
+
+        let total = 0;
+
+        function addExpense() {
+
+            let category =
+                document.getElementById("category").value;
+
+            let amount =
+                Number(document.getElementById("amount").value);
+
+            if (amount <= 0) {
+                alert("Please enter a valid amount.");
+                return;
+            }
+
+            total = total + amount;
+
+            let list =
+                document.getElementById("expenseList");
+
+            let item =
+                document.createElement("li");
+
+            item.innerHTML =
+                category + " - ₹" + amount;
+
+            list.appendChild(item);
+
+            document.getElementById("total").innerHTML =
+                "Total: ₹" + total;
+
+            document.getElementById("amount").value = "";
+        }
+
+    </script>
+
+</body>
+</html>

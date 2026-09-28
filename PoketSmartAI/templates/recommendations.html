@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Recommendations - PocketSmart AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🤖 AI Financial Recommendations</h1>
+
+        <p>Enter your monthly income and expenses.</p>
+
+        <form method="POST" action="/recommendations">
+
+            <label>Monthly Income:</label><br>
+            <input type="number"
+                   name="income"
+                   placeholder="Enter income"
+                   required>
+
+            <br><br>
+
+            <label>Monthly Expenses:</label><br>
+            <input type="number"
+                   name="expenses"
+                   placeholder="Enter expenses"
+                   required>
+
+            <br><br>
+
+            <button type="submit">
+                Get AI Recommendation
+            </button>
+
+        </form>
+
+        {% if recommendation %}
+            <br>
+
+            <h2>🤖 AI Recommendation</h2>
+
+            <p>{{ recommendation }}</p>
+        {% endif %}
+
+        <br>
+
+        <a href="/dashboard">⬅ Back to Dashboard</a>
+
+    </div>
+
+</body>
+</html>
